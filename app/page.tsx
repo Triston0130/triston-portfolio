@@ -16,41 +16,41 @@ import { portfolioData } from "@/lib/portfolio-data"
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Professional Header */}
-      <header className="hero-card mx-4 mt-8 mb-12">
-        <div className="container py-16">
-          <div className="text-center">
-            <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+      {/* Clean Hero Section */}
+      <header className="hero-section">
+        <div className="container py-20">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="mb-6 text-4xl md:text-5xl font-bold text-gray-900">
               {portfolioData.personalInfo.name}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 font-medium">
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 font-normal">
               {portfolioData.personalInfo.title}
             </p>
             
             {portfolioData.personalInfo.registryId && (
               <div className="mb-10">
-                <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm text-gray-800 rounded-full text-sm font-semibold border border-white/30 shadow-lg">
-                  🎓 Registry ID: {portfolioData.personalInfo.registryId}
+                <span className="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-200">
+                  Registry ID: {portfolioData.personalInfo.registryId}
                 </span>
               </div>
             )}
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="btn-modern inline-flex items-center gap-2">
-                <Mail className="w-5 h-5" />
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="btn-primary inline-flex items-center gap-2">
+                <Mail className="w-4 h-4" />
                 Contact Me
               </Link>
-              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="btn-outline inline-flex items-center gap-2">
-                <Phone className="w-5 h-5" />
+              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="btn-secondary inline-flex items-center gap-2">
+                <Phone className="w-4 h-4" />
                 {portfolioData.personalInfo.phone}
               </Link>
-              <div className="btn-outline inline-flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
+              <div className="btn-secondary inline-flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
                 California
               </div>
               {portfolioData.personalInfo.linkedin && (
-                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline inline-flex items-center gap-2">
-                  <Linkedin className="w-5 h-5" />
+                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2">
+                  <Linkedin className="w-4 h-4" />
                   LinkedIn
                 </Link>
               )}
@@ -59,41 +59,41 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Modern Navigation */}
-      <div className="container mb-12">
+      {/* Clean Navigation */}
+      <div className="container mb-16">
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="modern-nav grid w-full grid-cols-3 md:grid-cols-6 mb-12">
+          <TabsList className="clean-nav grid w-full grid-cols-3 md:grid-cols-6 mb-12 max-w-4xl mx-auto">
             <TabsTrigger value="about" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <User className="w-5 h-5" />
-              <span className="text-xs md:text-sm">About</span>
+              <User className="w-4 h-4" />
+              <span className="text-sm">About</span>
             </TabsTrigger>
             <TabsTrigger value="resume" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <FileText className="w-5 h-5" />
-              <span className="text-xs md:text-sm">Resume</span>
+              <FileText className="w-4 h-4" />
+              <span className="text-sm">Resume</span>
             </TabsTrigger>
             <TabsTrigger value="education" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <GraduationCap className="w-5 h-5" />
-              <span className="text-xs md:text-sm">Education</span>
+              <GraduationCap className="w-4 h-4" />
+              <span className="text-sm">Education</span>
             </TabsTrigger>
             <TabsTrigger value="experience" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <Briefcase className="w-5 h-5" />
-              <span className="text-xs md:text-sm">Experience</span>
+              <Briefcase className="w-4 h-4" />
+              <span className="text-sm">Experience</span>
             </TabsTrigger>
             <TabsTrigger value="certifications" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <Award className="w-5 h-5" />
-              <span className="text-xs md:text-sm">Certs</span>
+              <Award className="w-4 h-4" />
+              <span className="text-sm">Certifications</span>
             </TabsTrigger>
             <TabsTrigger value="portfolio" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
-              <FolderOpen className="w-5 h-5" />
-              <span className="text-xs md:text-sm">Portfolio</span>
+              <FolderOpen className="w-4 h-4" />
+              <span className="text-sm">Portfolio</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="about" className="modern-card mx-4 p-10">
+          <TabsContent value="about" className="clean-card max-w-4xl mx-auto p-8">
             <AboutProfessional summary={portfolioData.summary} />
           </TabsContent>
 
-          <TabsContent value="resume" className="modern-card mx-4 p-10">
+          <TabsContent value="resume" className="clean-card max-w-4xl mx-auto p-8">
             <ResumeSection 
               personalInfo={portfolioData.personalInfo}
               summary={portfolioData.summary}
@@ -104,22 +104,22 @@ export default function Home() {
             />
           </TabsContent>
 
-          <TabsContent value="education" className="modern-card mx-4 p-10">
+          <TabsContent value="education" className="clean-card max-w-4xl mx-auto p-8">
             <EducationTab education={portfolioData.education} />
           </TabsContent>
 
-          <TabsContent value="experience" className="modern-card mx-4 p-10">
+          <TabsContent value="experience" className="clean-card max-w-4xl mx-auto p-8">
             <ExperienceTab experience={portfolioData.experience} />
           </TabsContent>
 
-          <TabsContent value="certifications" className="modern-card mx-4 p-10">
+          <TabsContent value="certifications" className="clean-card max-w-4xl mx-auto p-8">
             <CertificationsTab 
               certificates={portfolioData.certificates}
               activities={portfolioData.activities}
             />
           </TabsContent>
 
-          <TabsContent value="portfolio" className="modern-card mx-4 p-10">
+          <TabsContent value="portfolio" className="clean-card max-w-4xl mx-auto p-8">
             <EnhancedPortfolioGallery 
               documents={portfolioData.documents}
               onDocumentUpload={(files) => {
