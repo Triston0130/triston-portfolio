@@ -10,83 +10,114 @@ import { ResumeSection } from "@/components/sections/resume-section"
 import { EducationTab } from "@/components/sections/education-tab"
 import { ExperienceTab } from "@/components/sections/experience-tab"
 import { CertificationsTab } from "@/components/sections/certifications-tab"
-import { PortfolioGallery } from "@/components/sections/portfolio-gallery"
+import { EnhancedPortfolioGallery } from "@/components/sections/enhanced-portfolio-gallery"
 import { portfolioData } from "@/lib/portfolio-data"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative">
+      {/* Floating Educational Elements */}
+      <div className="floating-elements">
+        <div className="floating-element">📚</div>
+        <div className="floating-element">🎓</div>
+        <div className="floating-element">✨</div>
+        <div className="floating-element">🌟</div>
+        <div className="floating-element">📝</div>
+        <div className="floating-element">🎨</div>
+      </div>
+      
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container py-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">{portfolioData.personalInfo.name}</h1>
-              <p className="text-lg text-blue-600 font-medium mt-1">{portfolioData.personalInfo.title}</p>
-              {portfolioData.personalInfo.registryId && (
-                <p className="text-sm text-gray-500 mt-1">{portfolioData.personalInfo.registryId}</p>
-              )}
+      <header className="glass-card mx-4 mt-4 relative z-10">
+        <div className="container py-8">
+          <div className="text-center mb-6">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-2 animate-pulse">
+              {portfolioData.personalInfo.name}
+            </h1>
+            <p className="text-2xl font-medium text-gray-700 mb-2">{portfolioData.personalInfo.title}</p>
+            {portfolioData.personalInfo.registryId && (
+              <p className="text-sm text-gray-500 mb-4">{portfolioData.personalInfo.registryId}</p>
+            )}
+            <div className="flex justify-center">
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
             </div>
-            
-            <div className="mt-4 md:mt-0 flex flex-wrap gap-4">
-              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">{portfolioData.personalInfo.email}</span>
-              </Link>
-              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">{portfolioData.personalInfo.phone}</span>
-              </Link>
-              <div className="flex items-center gap-2 text-gray-600">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">California</span>
-              </div>
-              {portfolioData.personalInfo.linkedin && (
-                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                  <Linkedin className="w-4 h-4" />
-                  <span className="text-sm">LinkedIn</span>
-                </Link>
-              )}
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-6 text-white">
+            <Link href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 btn-creative">
+              <Mail className="w-5 h-5" />
+              <span className="font-medium">Email Me</span>
+            </Link>
+            <Link href={`tel:${portfolioData.personalInfo.phone}`} className="flex items-center gap-2 btn-creative">
+              <Phone className="w-5 h-5" />
+              <span className="font-medium">Call Me</span>
+            </Link>
+            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium">
+              <MapPin className="w-5 h-5" />
+              <span>California</span>
             </div>
+            {portfolioData.personalInfo.linkedin && (
+              <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 btn-creative">
+                <Linkedin className="w-5 h-5" />
+                <span className="font-medium">LinkedIn</span>
+              </Link>
+            )}
           </div>
         </div>
       </header>
 
       {/* Navigation Tabs */}
-      <div className="container py-8">
+      <div className="container py-8 relative z-10">
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 mb-8 bg-white rounded-lg shadow-sm border">
-            <TabsTrigger value="about" className="flex items-center gap-2 py-3">
-              <User className="w-4 h-4" />
-              <span className="hidden sm:inline">About</span>
+          <TabsList className="glass-card grid w-full grid-cols-2 md:grid-cols-6 mb-12 p-2">
+            <TabsTrigger 
+              value="about" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <User className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">About Me</span>
             </TabsTrigger>
-            <TabsTrigger value="resume" className="flex items-center gap-2 py-3">
-              <FileText className="w-4 h-4" />
-              <span className="hidden sm:inline">Resume</span>
+            <TabsTrigger 
+              value="resume" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <FileText className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">Resume</span>
             </TabsTrigger>
-            <TabsTrigger value="education" className="flex items-center gap-2 py-3">
-              <GraduationCap className="w-4 h-4" />
-              <span className="hidden sm:inline">Education</span>
+            <TabsTrigger 
+              value="education" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <GraduationCap className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">Education</span>
             </TabsTrigger>
-            <TabsTrigger value="experience" className="flex items-center gap-2 py-3">
-              <Briefcase className="w-4 h-4" />
-              <span className="hidden sm:inline">Experience</span>
+            <TabsTrigger 
+              value="experience" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <Briefcase className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">Experience</span>
             </TabsTrigger>
-            <TabsTrigger value="certifications" className="flex items-center gap-2 py-3">
-              <Award className="w-4 h-4" />
-              <span className="hidden sm:inline">Certifications</span>
+            <TabsTrigger 
+              value="certifications" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500 hover:to-orange-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <Award className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">Certifications</span>
             </TabsTrigger>
-            <TabsTrigger value="portfolio" className="flex items-center gap-2 py-3">
-              <FolderOpen className="w-4 h-4" />
-              <span className="hidden sm:inline">Portfolio</span>
+            <TabsTrigger 
+              value="portfolio" 
+              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
+            >
+              <FolderOpen className="w-5 h-5" />
+              <span className="hidden sm:inline font-semibold">Portfolio</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="about" className="space-y-6">
+          <TabsContent value="about" className="glass-card space-y-6 p-8 mx-4">
             <AboutProfessional summary={portfolioData.summary} />
           </TabsContent>
 
-          <TabsContent value="resume" className="space-y-6">
+          <TabsContent value="resume" className="glass-card space-y-6 p-8 mx-4">
             <ResumeSection 
               personalInfo={portfolioData.personalInfo}
               summary={portfolioData.summary}
@@ -97,23 +128,23 @@ export default function Home() {
             />
           </TabsContent>
 
-          <TabsContent value="education" className="space-y-6">
+          <TabsContent value="education" className="glass-card space-y-6 p-8 mx-4">
             <EducationTab education={portfolioData.education} />
           </TabsContent>
 
-          <TabsContent value="experience" className="space-y-6">
+          <TabsContent value="experience" className="glass-card space-y-6 p-8 mx-4">
             <ExperienceTab experience={portfolioData.experience} />
           </TabsContent>
 
-          <TabsContent value="certifications" className="space-y-6">
+          <TabsContent value="certifications" className="glass-card space-y-6 p-8 mx-4">
             <CertificationsTab 
               certificates={portfolioData.certificates}
               activities={portfolioData.activities}
             />
           </TabsContent>
 
-          <TabsContent value="portfolio" className="space-y-6">
-            <PortfolioGallery 
+          <TabsContent value="portfolio" className="glass-card space-y-6 p-8 mx-4">
+            <EnhancedPortfolioGallery 
               documents={portfolioData.documents}
               onDocumentUpload={(files) => {
                 console.log('Files uploaded:', files)
@@ -121,6 +152,7 @@ export default function Home() {
               onDocumentDelete={(id) => {
                 console.log('Document deleted:', id)
               }}
+              showAdminControls={false}
             />
           </TabsContent>
         </Tabs>
