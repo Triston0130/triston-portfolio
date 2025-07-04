@@ -36,21 +36,21 @@ export default function Home() {
             )}
             
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="btn-primary inline-flex items-center gap-2">
-                <Mail className="w-4 h-4" />
+              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="btn-modern inline-flex items-center gap-2">
+                <Mail className="w-5 h-5" />
                 Contact Me
               </Link>
-              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="btn-secondary inline-flex items-center gap-2">
-                <Phone className="w-4 h-4" />
+              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="btn-outline inline-flex items-center gap-2">
+                <Phone className="w-5 h-5" />
                 {portfolioData.personalInfo.phone}
               </Link>
-              <div className="inline-flex items-center gap-2 px-4 py-3 bg-gray-50 text-gray-700 rounded-lg border">
-                <MapPin className="w-4 h-4" />
+              <div className="btn-outline inline-flex items-center gap-2">
+                <MapPin className="w-5 h-5" />
                 California
               </div>
               {portfolioData.personalInfo.linkedin && (
-                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2">
-                  <Linkedin className="w-4 h-4" />
+                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline inline-flex items-center gap-2">
+                  <Linkedin className="w-5 h-5" />
                   LinkedIn
                 </Link>
               )}
@@ -59,41 +59,41 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Professional Navigation */}
+      {/* Modern Navigation */}
       <div className="container mb-12">
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="professional-nav grid w-full grid-cols-2 md:grid-cols-6 mb-12">
-            <TabsTrigger value="about" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <User className="w-4 h-4" />
+          <TabsList className="modern-nav grid w-full grid-cols-2 md:grid-cols-6 mb-12">
+            <TabsTrigger value="about" className="nav-tab flex items-center gap-2">
+              <User className="w-5 h-5" />
               <span className="hidden sm:inline">About</span>
             </TabsTrigger>
-            <TabsTrigger value="resume" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <FileText className="w-4 h-4" />
+            <TabsTrigger value="resume" className="nav-tab flex items-center gap-2">
+              <FileText className="w-5 h-5" />
               <span className="hidden sm:inline">Resume</span>
             </TabsTrigger>
-            <TabsTrigger value="education" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <GraduationCap className="w-4 h-4" />
+            <TabsTrigger value="education" className="nav-tab flex items-center gap-2">
+              <GraduationCap className="w-5 h-5" />
               <span className="hidden sm:inline">Education</span>
             </TabsTrigger>
-            <TabsTrigger value="experience" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <Briefcase className="w-4 h-4" />
+            <TabsTrigger value="experience" className="nav-tab flex items-center gap-2">
+              <Briefcase className="w-5 h-5" />
               <span className="hidden sm:inline">Experience</span>
             </TabsTrigger>
-            <TabsTrigger value="certifications" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <Award className="w-4 h-4" />
+            <TabsTrigger value="certifications" className="nav-tab flex items-center gap-2">
+              <Award className="w-5 h-5" />
               <span className="hidden sm:inline">Certifications</span>
             </TabsTrigger>
-            <TabsTrigger value="portfolio" className="nav-tab flex items-center gap-2 data-[state=active]:active">
-              <FolderOpen className="w-4 h-4" />
+            <TabsTrigger value="portfolio" className="nav-tab flex items-center gap-2">
+              <FolderOpen className="w-5 h-5" />
               <span className="hidden sm:inline">Portfolio</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="about" className="professional-card mx-4 p-8">
+          <TabsContent value="about" className="modern-card mx-4 p-10">
             <AboutProfessional summary={portfolioData.summary} />
           </TabsContent>
 
-          <TabsContent value="resume" className="professional-card mx-4 p-8">
+          <TabsContent value="resume" className="modern-card mx-4 p-10">
             <ResumeSection 
               personalInfo={portfolioData.personalInfo}
               summary={portfolioData.summary}
@@ -104,22 +104,22 @@ export default function Home() {
             />
           </TabsContent>
 
-          <TabsContent value="education" className="professional-card mx-4 p-8">
+          <TabsContent value="education" className="modern-card mx-4 p-10">
             <EducationTab education={portfolioData.education} />
           </TabsContent>
 
-          <TabsContent value="experience" className="professional-card mx-4 p-8">
+          <TabsContent value="experience" className="modern-card mx-4 p-10">
             <ExperienceTab experience={portfolioData.experience} />
           </TabsContent>
 
-          <TabsContent value="certifications" className="professional-card mx-4 p-8">
+          <TabsContent value="certifications" className="modern-card mx-4 p-10">
             <CertificationsTab 
               certificates={portfolioData.certificates}
               activities={portfolioData.activities}
             />
           </TabsContent>
 
-          <TabsContent value="portfolio" className="professional-card mx-4 p-8">
+          <TabsContent value="portfolio" className="modern-card mx-4 p-10">
             <EnhancedPortfolioGallery 
               documents={portfolioData.documents}
               onDocumentUpload={(files) => {
