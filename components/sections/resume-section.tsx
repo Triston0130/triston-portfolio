@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Download, Print, Mail, Phone, MapPin, Linkedin } from "lucide-react"
+import { Download, Printer, Mail, Phone, MapPin, Linkedin } from "lucide-react"
 import { Education, Experience, Certificate, Activity } from "@/types"
 
 interface ResumeSectionProps {
@@ -73,7 +73,7 @@ export function ResumeSection({ personalInfo, summary, education, experience, ce
         <h2 className="section-title text-left">Resume</h2>
         <div className="flex gap-3">
           <Button onClick={handlePrint} variant="outline" size="sm">
-            <Print className="w-4 h-4 mr-2" />
+            <Printer className="w-4 h-4 mr-2" />
             Print
           </Button>
           <Button onClick={handleDownload} size="sm">

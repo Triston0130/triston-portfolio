@@ -62,7 +62,9 @@
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
   
   .btn-primary {
