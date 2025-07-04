@@ -15,109 +15,85 @@ import { portfolioData } from "@/lib/portfolio-data"
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
-      {/* Floating Educational Elements */}
-      <div className="floating-elements">
-        <div className="floating-element">📚</div>
-        <div className="floating-element">🎓</div>
-        <div className="floating-element">✨</div>
-        <div className="floating-element">🌟</div>
-        <div className="floating-element">📝</div>
-        <div className="floating-element">🎨</div>
-      </div>
-      
-      {/* Header */}
-      <header className="glass-card mx-4 mt-4 relative z-10">
-        <div className="container py-8">
-          <div className="text-center mb-6">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-2 animate-pulse">
+    <div className="min-h-screen">
+      {/* Professional Header */}
+      <header className="hero-card mx-4 mt-8 mb-12">
+        <div className="container py-16">
+          <div className="text-center">
+            <h1 className="mb-4">
               {portfolioData.personalInfo.name}
             </h1>
-            <p className="text-2xl font-medium text-gray-700 mb-2">{portfolioData.personalInfo.title}</p>
+            <p className="text-xl text-gray-600 mb-6 font-medium">
+              {portfolioData.personalInfo.title}
+            </p>
+            
             {portfolioData.personalInfo.registryId && (
-              <p className="text-sm text-gray-500 mb-4">{portfolioData.personalInfo.registryId}</p>
+              <div className="mb-8">
+                <span className="inline-flex items-center px-4 py-2 bg-accent-50 text-accent-700 rounded-full text-sm font-medium border border-accent-200">
+                  Registry ID: {portfolioData.personalInfo.registryId}
+                </span>
+              </div>
             )}
-            <div className="flex justify-center">
-              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-            </div>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 text-white">
-            <Link href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 btn-creative">
-              <Mail className="w-5 h-5" />
-              <span className="font-medium">Email Me</span>
-            </Link>
-            <Link href={`tel:${portfolioData.personalInfo.phone}`} className="flex items-center gap-2 btn-creative">
-              <Phone className="w-5 h-5" />
-              <span className="font-medium">Call Me</span>
-            </Link>
-            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium">
-              <MapPin className="w-5 h-5" />
-              <span>California</span>
-            </div>
-            {portfolioData.personalInfo.linkedin && (
-              <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 btn-creative">
-                <Linkedin className="w-5 h-5" />
-                <span className="font-medium">LinkedIn</span>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="btn-primary inline-flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                Contact Me
               </Link>
-            )}
+              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="btn-secondary inline-flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                {portfolioData.personalInfo.phone}
+              </Link>
+              <div className="inline-flex items-center gap-2 px-4 py-3 bg-gray-50 text-gray-700 rounded-lg border">
+                <MapPin className="w-4 h-4" />
+                California
+              </div>
+              {portfolioData.personalInfo.linkedin && (
+                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2">
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Navigation Tabs */}
-      <div className="container py-8 relative z-10">
+      {/* Professional Navigation */}
+      <div className="container mb-12">
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="glass-card grid w-full grid-cols-2 md:grid-cols-6 mb-12 p-2">
-            <TabsTrigger 
-              value="about" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <User className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">About Me</span>
+          <TabsList className="professional-nav grid w-full grid-cols-2 md:grid-cols-6 mb-12">
+            <TabsTrigger value="about" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <User className="w-4 h-4" />
+              <span className="hidden sm:inline">About</span>
             </TabsTrigger>
-            <TabsTrigger 
-              value="resume" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <FileText className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Resume</span>
+            <TabsTrigger value="resume" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <FileText className="w-4 h-4" />
+              <span className="hidden sm:inline">Resume</span>
             </TabsTrigger>
-            <TabsTrigger 
-              value="education" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <GraduationCap className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Education</span>
+            <TabsTrigger value="education" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <GraduationCap className="w-4 h-4" />
+              <span className="hidden sm:inline">Education</span>
             </TabsTrigger>
-            <TabsTrigger 
-              value="experience" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <Briefcase className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Experience</span>
+            <TabsTrigger value="experience" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <Briefcase className="w-4 h-4" />
+              <span className="hidden sm:inline">Experience</span>
             </TabsTrigger>
-            <TabsTrigger 
-              value="certifications" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500 hover:to-orange-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <Award className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Certifications</span>
+            <TabsTrigger value="certifications" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <Award className="w-4 h-4" />
+              <span className="hidden sm:inline">Certifications</span>
             </TabsTrigger>
-            <TabsTrigger 
-              value="portfolio" 
-              className="flex items-center gap-2 py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-500 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
-            >
-              <FolderOpen className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Portfolio</span>
+            <TabsTrigger value="portfolio" className="nav-tab flex items-center gap-2 data-[state=active]:active">
+              <FolderOpen className="w-4 h-4" />
+              <span className="hidden sm:inline">Portfolio</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="about" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="about" className="professional-card mx-4 p-8">
             <AboutProfessional summary={portfolioData.summary} />
           </TabsContent>
 
-          <TabsContent value="resume" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="resume" className="professional-card mx-4 p-8">
             <ResumeSection 
               personalInfo={portfolioData.personalInfo}
               summary={portfolioData.summary}
@@ -128,22 +104,22 @@ export default function Home() {
             />
           </TabsContent>
 
-          <TabsContent value="education" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="education" className="professional-card mx-4 p-8">
             <EducationTab education={portfolioData.education} />
           </TabsContent>
 
-          <TabsContent value="experience" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="experience" className="professional-card mx-4 p-8">
             <ExperienceTab experience={portfolioData.experience} />
           </TabsContent>
 
-          <TabsContent value="certifications" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="certifications" className="professional-card mx-4 p-8">
             <CertificationsTab 
               certificates={portfolioData.certificates}
               activities={portfolioData.activities}
             />
           </TabsContent>
 
-          <TabsContent value="portfolio" className="glass-card space-y-6 p-8 mx-4">
+          <TabsContent value="portfolio" className="professional-card mx-4 p-8">
             <EnhancedPortfolioGallery 
               documents={portfolioData.documents}
               onDocumentUpload={(files) => {
