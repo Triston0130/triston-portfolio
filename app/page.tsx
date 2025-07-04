@@ -20,17 +20,17 @@ export default function Home() {
       <header className="hero-card mx-4 mt-8 mb-12">
         <div className="container py-16">
           <div className="text-center">
-            <h1 className="mb-4">
+            <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               {portfolioData.personalInfo.name}
             </h1>
-            <p className="text-xl text-gray-600 mb-6 font-medium">
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 font-medium">
               {portfolioData.personalInfo.title}
             </p>
             
             {portfolioData.personalInfo.registryId && (
-              <div className="mb-8">
-                <span className="inline-flex items-center px-4 py-2 bg-accent-50 text-accent-700 rounded-full text-sm font-medium border border-accent-200">
-                  Registry ID: {portfolioData.personalInfo.registryId}
+              <div className="mb-10">
+                <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm text-gray-800 rounded-full text-sm font-semibold border border-white/30 shadow-lg">
+                  🎓 Registry ID: {portfolioData.personalInfo.registryId}
                 </span>
               </div>
             )}
@@ -62,30 +62,30 @@ export default function Home() {
       {/* Modern Navigation */}
       <div className="container mb-12">
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="modern-nav grid w-full grid-cols-2 md:grid-cols-6 mb-12">
-            <TabsTrigger value="about" className="nav-tab flex items-center gap-2">
+          <TabsList className="modern-nav grid w-full grid-cols-3 md:grid-cols-6 mb-12">
+            <TabsTrigger value="about" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <User className="w-5 h-5" />
-              <span className="hidden sm:inline">About</span>
+              <span className="text-xs md:text-sm">About</span>
             </TabsTrigger>
-            <TabsTrigger value="resume" className="nav-tab flex items-center gap-2">
+            <TabsTrigger value="resume" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <FileText className="w-5 h-5" />
-              <span className="hidden sm:inline">Resume</span>
+              <span className="text-xs md:text-sm">Resume</span>
             </TabsTrigger>
-            <TabsTrigger value="education" className="nav-tab flex items-center gap-2">
+            <TabsTrigger value="education" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <GraduationCap className="w-5 h-5" />
-              <span className="hidden sm:inline">Education</span>
+              <span className="text-xs md:text-sm">Education</span>
             </TabsTrigger>
-            <TabsTrigger value="experience" className="nav-tab flex items-center gap-2">
+            <TabsTrigger value="experience" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <Briefcase className="w-5 h-5" />
-              <span className="hidden sm:inline">Experience</span>
+              <span className="text-xs md:text-sm">Experience</span>
             </TabsTrigger>
-            <TabsTrigger value="certifications" className="nav-tab flex items-center gap-2">
+            <TabsTrigger value="certifications" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <Award className="w-5 h-5" />
-              <span className="hidden sm:inline">Certifications</span>
+              <span className="text-xs md:text-sm">Certs</span>
             </TabsTrigger>
-            <TabsTrigger value="portfolio" className="nav-tab flex items-center gap-2">
+            <TabsTrigger value="portfolio" className="nav-tab flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <FolderOpen className="w-5 h-5" />
-              <span className="hidden sm:inline">Portfolio</span>
+              <span className="text-xs md:text-sm">Portfolio</span>
             </TabsTrigger>
           </TabsList>
 
