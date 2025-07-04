@@ -5,15 +5,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Download, Mail, Phone, MapPin, Linkedin, FileText, GraduationCap, Briefcase, Award, User, FolderOpen } from "lucide-react"
 import Link from "next/link"
 
-import { AboutProfessional } from "@/components/sections/about-professional"
-import { ResumeSection } from "@/components/sections/resume-section"
-import { EducationTab } from "@/components/sections/education-tab"
-import { ExperienceTab } from "@/components/sections/experience-tab"
-import { CertificationsTab } from "@/components/sections/certifications-tab"
-import { PortfolioGallery } from "@/components/sections/portfolio-gallery"
-import { portfolioData } from "@/lib/portfolio-data"
+interface NavigationProps {
+  personalInfo: {
+    name: string
+    title: string
+    email: string
+    phone: string
+    address: string
+    linkedin?: string
+    registryId?: string
+  }
+}
 
-export default function Home() {
+export function Navigation({ personalInfo }: NavigationProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -21,28 +25,28 @@ export default function Home() {
         <div className="container py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{portfolioData.personalInfo.name}</h1>
-              <p className="text-lg text-blue-600 font-medium mt-1">{portfolioData.personalInfo.title}</p>
-              {portfolioData.personalInfo.registryId && (
-                <p className="text-sm text-gray-500 mt-1">{portfolioData.personalInfo.registryId}</p>
+              <h1 className="text-3xl font-bold text-gray-900">{personalInfo.name}</h1>
+              <p className="text-lg text-blue-600 font-medium mt-1">{personalInfo.title}</p>
+              {personalInfo.registryId && (
+                <p className="text-sm text-gray-500 mt-1">{personalInfo.registryId}</p>
               )}
             </div>
             
             <div className="mt-4 md:mt-0 flex flex-wrap gap-4">
-              <Link href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
                 <Mail className="w-4 h-4" />
-                <span className="text-sm">{portfolioData.personalInfo.email}</span>
+                <span className="text-sm">{personalInfo.email}</span>
               </Link>
-              <Link href={`tel:${portfolioData.personalInfo.phone}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href={`tel:${personalInfo.phone}`} className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
                 <Phone className="w-4 h-4" />
-                <span className="text-sm">{portfolioData.personalInfo.phone}</span>
+                <span className="text-sm">{personalInfo.phone}</span>
               </Link>
               <div className="flex items-center gap-2 text-gray-600">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">California</span>
               </div>
-              {portfolioData.personalInfo.linkedin && (
-                <Link href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+              {personalInfo.linkedin && (
+                <Link href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
                   <Linkedin className="w-4 h-4" />
                   <span className="text-sm">LinkedIn</span>
                 </Link>
@@ -83,45 +87,39 @@ export default function Home() {
           </TabsList>
 
           <TabsContent value="about" className="space-y-6">
-            <AboutProfessional summary={portfolioData.summary} />
+            <div id="about-content">
+              {/* About content will be inserted here */}
+            </div>
           </TabsContent>
 
           <TabsContent value="resume" className="space-y-6">
-            <ResumeSection 
-              personalInfo={portfolioData.personalInfo}
-              summary={portfolioData.summary}
-              education={portfolioData.education}
-              experience={portfolioData.experience}
-              certificates={portfolioData.certificates}
-              activities={portfolioData.activities}
-            />
+            <div id="resume-content">
+              {/* Resume content will be inserted here */}
+            </div>
           </TabsContent>
 
           <TabsContent value="education" className="space-y-6">
-            <EducationTab education={portfolioData.education} />
+            <div id="education-content">
+              {/* Education content will be inserted here */}
+            </div>
           </TabsContent>
 
           <TabsContent value="experience" className="space-y-6">
-            <ExperienceTab experience={portfolioData.experience} />
+            <div id="experience-content">
+              {/* Experience content will be inserted here */}
+            </div>
           </TabsContent>
 
           <TabsContent value="certifications" className="space-y-6">
-            <CertificationsTab 
-              certificates={portfolioData.certificates}
-              activities={portfolioData.activities}
-            />
+            <div id="certifications-content">
+              {/* Certifications content will be inserted here */}
+            </div>
           </TabsContent>
 
           <TabsContent value="portfolio" className="space-y-6">
-            <PortfolioGallery 
-              documents={portfolioData.documents}
-              onDocumentUpload={(files) => {
-                console.log('Files uploaded:', files)
-              }}
-              onDocumentDelete={(id) => {
-                console.log('Document deleted:', id)
-              }}
-            />
+            <div id="portfolio-content">
+              {/* Portfolio content will be inserted here */}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
